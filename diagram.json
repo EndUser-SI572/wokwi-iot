@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "author": "Fernanda Salomé",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 83.4, "left": -122, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 248.46,
+      "left": -31.9,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -57.3,
+      "left": -72.6,
+      "attrs": { "humidity": "88.5", "temperature": "17.7" }
+    },
+    {
+      "type": "chip-soil-moisture-sensor",
+      "id": "chip1",
+      "top": 231.42,
+      "left": 264,
+      "attrs": {}
+    },
+    {
+      "type": "chip-soil-moisture-sensor",
+      "id": "chip2",
+      "top": 231.42,
+      "left": 398.4,
+      "attrs": {}
+    },
+    {
+      "type": "chip-soil-moisture-sensor",
+      "id": "chip3",
+      "top": 231.42,
+      "left": 542.4,
+      "attrs": {}
+    },
+    { "type": "chip-soil-moisture-sensor", "id": "chip4", "top": 87.42, "left": 264, "attrs": {} },
+    { "type": "chip-soil-moisture-sensor", "id": "chip5", "top": 87.42, "left": 408, "attrs": {} },
+    { "type": "chip-soil-moisture-sensor", "id": "chip6", "top": 87.42, "left": 552, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -13.2, "left": 13.4, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 361.6,
+      "left": 303.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 43.2,
+      "left": 47.45,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bb1:tp.1", "bb1:bp.1", "red", [ "v173.1", "h1.6" ] ],
+    [ "bb1:tn.2", "bb1:bn.2", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.4", "red", [ "v0" ] ],
+    [ "dht1:GND", "bb1:tn.6", "black", [ "v0" ] ],
+    [ "dht1:SDA", "bb1:8t.a", "purple", [ "v57.6", "h19.3" ] ],
+    [ "bb1:8t.e", "bb1:8b.f", "purple", [ "v0" ] ],
+    [ "esp:3V3", "bb1:bp.3", "red", [ "v-0.15", "h-20.8" ] ],
+    [ "esp:32", "bb1:27b.j", "blue", [ "v19.05", "h144" ] ],
+    [ "esp:33", "bb1:26b.j", "yellow", [ "v9.45", "h124.8" ] ],
+    [ "esp:35", "bb1:25b.j", "cyan", [ "v28.65", "h134.4" ] ],
+    [ "esp:GND.2", "bb1:bn.4", "black", [ "v0" ] ],
+    [ "esp:19", "bb1:8b.j", "purple", [ "v-19.2", "h-38.4" ] ],
+    [ "chip1:VCC", "bb1:bp.25", "red", [ "h-28.8", "v9.6", "h-59.2" ] ],
+    [ "chip1:GND", "bb1:bn.25", "black", [ "h-19.2", "v30.1" ] ],
+    [ "chip2:A0", "bb1:26b.g", "yellow", [ "h11.41", "v-38.4" ] ],
+    [ "chip3:A0", "bb1:25b.h", "cyan", [ "h21.01", "v-28.8" ] ],
+    [ "chip5:A0", "bb1:14t.b", "violet", [ "v0" ] ],
+    [ "chip6:A0", "bb1:15t.c", "limegreen", [ "v0" ] ],
+    [ "chip2:GND", "bb1:bn.24", "black", [ "h-19.2", "v38.4", "h-212.8" ] ],
+    [ "chip3:GND", "bb1:bn.23", "black", [ "h-19.2", "v48", "h-366.4" ] ],
+    [ "chip2:VCC", "bb1:bp.24", "red", [ "v-57.6", "h-172.8", "v76.8", "h-59.2" ] ],
+    [ "bb1:bp.23", "chip3:VCC", "red", [ "h59.2", "v-77.7", "h326.4" ] ],
+    [ "chip5:VCC", "bb1:tp.24", "red", [ "h-19.2", "v-19.2", "h-222.4" ] ],
+    [ "chip6:VCC", "bb1:tp.23", "red", [ "h-19.2", "v-28.8", "h-376" ] ],
+    [ "chip5:GND", "bb1:tn.24", "black", [ "h-9.6", "v9.6", "h-232" ] ],
+    [ "chip6:GND", "bb1:tn.23", "black", [ "h-19.2", "v19.2", "h-376" ] ],
+    [ "chip4:VCC", "bb1:tp.25", "red", [ "h0" ] ],
+    [ "chip4:GND", "bb1:tn.25", "black", [ "h0" ] ],
+    [ "chip1:A0", "bb1:27b.f", "blue", [ "h11.41", "v-48" ] ],
+    [ "bb1:13t.e", "esp:34", "orange", [ "v268.8", "h-38.4" ] ],
+    [ "chip4:A0", "bb1:13t.a", "orange", [ "v0" ] ],
+    [ "bb1:14t.e", "esp:VN", "violet", [ "v278.4", "h-57.6" ] ],
+    [ "bb1:15t.e", "esp:VP", "limegreen", [ "v288", "h-76.8" ] ],
+    [ "lcd1:SDA", "bb1:24b.j", "#8f4814", [ "h0" ] ],
+    [ "lcd1:SCL", "bb1:23b.j", "gray", [ "h0" ] ],
+    [ "esp:21", "bb1:24b.i", "#8f4814", [ "v0" ] ],
+    [ "esp:22", "bb1:23b.h", "gray", [ "v0" ] ],
+    [ "lcd1:GND", "bb1:bn.21", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "bb1:bp.22", "red", [ "h0" ] ],
+    [ "led1:C", "bb1:tn.11", "black", [ "v0" ] ],
+    [ "esp:4", "bb1:17t.e", "white", [ "v0" ] ],
+    [ "r1:1", "bb1:17t.d", "white", [ "v0" ] ],
+    [ "r1:2", "led1:A", "white", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
